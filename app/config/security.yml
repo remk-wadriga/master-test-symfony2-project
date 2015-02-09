@@ -1,0 +1,33 @@
+security:
+    firewalls:
+        secured_area:
+            pattern: /
+            anonymous: ~
+            form_login:
+                login_path: /login
+                check_path: /login_check
+                success_handler: login_success_handler
+            logout: ~
+
+    access_control:
+        - { path: ^/$,                      role:   IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/registration,           role:   IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/login,                  role:   IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/_wdt,                   role:   IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/_profiler,              role:   IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/.*,                     role:   ROLE_USER }
+
+    providers:
+        main:
+            entity: { class: GeneralBundle\Entity\User, property: username }
+
+    encoders:
+        GeneralBundle\Entity\User:
+            algorithm: sha512
+            iterations: 1
+            encode_as_base64: false
+
+    role_hierarchy:
+        ROLE_USER: ROLE_GUEST
+        ROLE_MODERATOR: ROLE_USER
+        ROLE_ADMIN: ROLE_MODERATOR

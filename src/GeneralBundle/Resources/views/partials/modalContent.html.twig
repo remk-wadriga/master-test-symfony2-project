@@ -1,0 +1,25 @@
+
+<span class="modal_close_button fui-cross"></span>
+
+<p class="h6 modal_title">{{ modalWindow.title }}</p>
+
+<div class="modal_content">{{ modalWindow.content }}</div>
+
+<div class="row">
+
+    <div class="col-xs-4">
+        <a href="{{ path(modalWindow.okLink) }}" id="modal_button_ok" class="btn btn-block btn-lg btn-success">
+            <span class="input-icon fui-check pull-left"></span>
+            {{ modalWindow.button_ok }}
+        </a>
+    </div>
+
+    <div class="col-xs-4">
+        <a href="{{ path(modalWindow.cancelLink) }}" id="modal_button_cancel" class="btn btn-block btn-lg btn-default">
+            <span class="input-icon fui-exit pull-left"></span>
+            {{ modalWindow.button_cancel }}
+        </a>
+    </div>
+
+</div>
+

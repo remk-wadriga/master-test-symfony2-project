@@ -1,0 +1,28 @@
+<div id="account-form">
+
+    <form action="{{ path('user_home') }}" method="post" {{ form_enctype(accountForm) }}>
+        {{ form_errors(accountForm) }}
+
+        <fieldset>
+
+            <div class="form-group">
+                {{ form_widget(accountForm.username, { attr: { 'class': 'form-control' } }) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_widget(accountForm.firstName, { attr: { 'class': 'form-control' } }) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_widget(accountForm.lastName, { attr: { 'class': 'form-control' } }) }}
+            </div>
+
+            {{ form_rest(accountForm) }}
+
+        </fieldset>
+
+        <input type="submit" value="{% trans %}Принять{% endtrans %}" class="btn btn-lg btn-success btn-block" />
+
+    </form>
+
+</div>

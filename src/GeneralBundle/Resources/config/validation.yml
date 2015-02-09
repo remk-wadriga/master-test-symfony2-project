@@ -1,0 +1,4 @@
+GeneralBundle\Entity\User:
+    properties:
+        password:
+            - NotBlank: ~

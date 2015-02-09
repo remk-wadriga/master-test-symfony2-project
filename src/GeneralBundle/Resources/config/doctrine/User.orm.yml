@@ -1,0 +1,58 @@
+GeneralBundle\Entity\User:
+    type: entity
+    repositoryClass: GeneralBundle\Repository\UserRepository
+    table: account
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        username:
+            type: string
+            length: 28
+            nullable: false
+            unique: true
+        password:
+            type: string
+            length: 512
+            nullable: false
+        email:
+            type: string
+            length: 128
+            nullable: false
+            unique: true
+        first_name:
+            type: string
+            length: 28
+            nullable: true
+        last_name:
+            type: string
+            length: 28
+            nullable: true
+        info:
+            type: text
+            nullable: true
+        avatar:
+            type: string
+            length: 512
+            nullable: true
+        role:
+            type: string
+            length: 16
+            nullable: false
+        rate:
+            type: integer
+            nullable: false
+        date_registration:
+            type: datetime
+            nullable: false
+        date_last_login:
+            type: datetime
+            nullable: true
+
+    lifecycleCallbacks:
+        prePersist: [ setDateRegistrationValue, setRoleValue, setRateValue, setLoginValue, setPasswordValue ]
+        preUpdate: [  ]
+        postPersist: [ uploadAvatar ]
+        postUpdate: [ uploadAvatar ]

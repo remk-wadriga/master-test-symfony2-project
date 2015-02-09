@@ -1,0 +1,23 @@
+services:
+
+    login_success_handler:
+        class:  GeneralBundle\Handler\LoginSuccessHandler
+        arguments: [@security.context, @doctrine, @router]
+    user_manager:
+        class: GeneralBundle\Manager\UserManager
+        arguments: [@doctrine, @translator]
+    answer_manager:
+        class: GeneralBundle\Manager\AnswerManager
+        arguments: [@doctrine, @translator]
+    formula_manager:
+        class: GeneralBundle\Manager\FormulaManager
+        arguments: [@doctrine, @translator]
+    question_manager:
+        class: GeneralBundle\Manager\QuestionManager
+        arguments: [@doctrine, @translator]
+    test_manager:
+        class: GeneralBundle\Manager\TestManager
+        arguments: [@doctrine, @translator]
+    user_test_result_manager:
+        class: GeneralBundle\Manager\UserTestResultManager
+        arguments: [@doctrine, @translator]

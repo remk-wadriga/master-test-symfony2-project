@@ -1,0 +1,40 @@
+<div id="registration-form">
+
+    <form action="{{ path('registration') }}" method="post" {{ form_enctype(registrationForm) }}>
+        {{ form_errors(registrationForm) }}
+
+        <fieldset>
+
+            <div class="form-group">
+                {{ form_widget(registrationForm.username, { attr: { 'class': 'form-control' } }) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_widget(registrationForm.email, { attr: { 'class': 'form-control' } }) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_widget(registrationForm.firstName, { attr: { 'class': 'form-control' } }) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_widget(registrationForm.lastName, { attr: { 'class': 'form-control' } }) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_widget(registrationForm.password.first, { attr: { 'class': 'form-control' } }) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_widget(registrationForm.password.second, { attr: { 'class': 'form-control' } }) }}
+            </div>
+
+            {{ form_rest(registrationForm) }}
+
+        </fieldset>
+
+        <input type="submit" value="{% trans %}Регистрация{% endtrans %}" class="btn btn-lg btn-success btn-block" />
+
+    </form>
+
+</div>

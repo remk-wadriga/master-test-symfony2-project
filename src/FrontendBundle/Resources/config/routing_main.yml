@@ -1,0 +1,35 @@
+home:
+    path:     /
+    defaults: { _controller: FrontendBundle:Index:index }
+
+login:
+    path:     login
+    defaults: { _controller: FrontendBundle:Index:login }
+
+login_check:
+    pattern: /login_check
+
+logout:
+    pattern:   /logout
+
+registration:
+    path:     registration
+    defaults: { _controller: FrontendBundle:Index:registration }
+
+user_home:
+    path:     account
+    defaults: { _controller: FrontendBundle:User:index }
+
+test_list:
+    path:     tests
+    defaults: { _controller: FrontendBundle:Test:list }
+
+create_test:
+    path:     create-test-{step}
+    defaults: { _controller: FrontendBundle:Test:create }
+    requirements:
+        step:  \d+
+
+get_test_type_form:
+    path:     get-test-type-form
+    defaults: { _controller: FrontendBundle:Test:typeForm }

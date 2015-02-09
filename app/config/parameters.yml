@@ -1,0 +1,18 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_driver: pdo_pgsql
+    database_host: localhost
+    database_port: null
+    database_name: master_test
+    database_user: web
+    database_password: 051571
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    locale: en
+    secret: UISDF876DKMFSF544DFSFD
+    date_format: Y-m-d
+    use_assetic_controller: true
+    debug_toolbar: true
+    debug_redirects: false

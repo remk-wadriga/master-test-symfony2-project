@@ -1,0 +1,40 @@
+<div id="masthead">
+    <div class="container">
+        <div class="row voffset8">
+            <div class="col-md-7">
+                <div class="well-lg page-header">
+                    <h3 id="page-sub-name">
+                        {% if pageName is not defined %}
+                            {% set pageName = 'Мастер-тест' %}
+                        {% endif %}
+                        {{ pageName|trans }}
+
+                        {% if pageSubName is not defined %}
+                            {% set pageSubName = '' %}
+                        {% endif %}
+                        {% if pageSubName %}
+                            <p class="lead page-sub-name-content">{{ pageSubName|trans }}</p>
+                        {% endif %}
+                    </h3>
+                </div>
+            </div>
+
+            <div class="col-md-5">
+                {% if pageSubHead is not defined %}
+                    {% set pageSubHead = '' %}
+                {% endif %}
+                {% if pageSubHead %}
+                    <div class="well well-lg">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{ pageSubHead | raw }}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div><!-- /cont -->
+
+
+</div>

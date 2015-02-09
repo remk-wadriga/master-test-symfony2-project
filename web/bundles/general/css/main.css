@@ -1,0 +1,119 @@
+/* Base classes */
+
+.option-passive{
+    opacity: 0.5;
+}
+
+/* END  Base classes */
+
+
+
+/* Main modal window */
+
+#modal_window{
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.5);
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 9999;
+}
+
+.modal_body {
+    background: none repeat scroll 0 0 #f1f1f1;
+    border-radius: 4px;
+    left: 50%;
+    margin: -190px 0 0 -360px;
+    padding: 30px;
+    position: fixed;
+    top: 40%;
+    width: 720px;
+    z-index: 99999;
+}
+
+.modal_close_button {
+    cursor: pointer;
+    font-size: 15px;
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    display: inline-block;
+}
+
+.modal_title {
+    font-size: 24px;
+    line-height: 30px;
+}
+
+.modal_content {
+    background: none repeat scroll 0 0 #fff;
+    font-size: 12px;
+    min-height: 100px;
+    overflow: auto;
+    border-radius: 7px;
+    padding: 8px 12px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#modal_button_ok {
+}
+
+#modal_button_cancel {
+}
+
+#modal_window .btn {
+    max-width: 160px;
+}
+
+/* END main modal window */
+
+/* auto-url */
+
+.auto-url{
+    cursor: pointer;
+}
+
+/* END auto-url */
+
+/* tooltip */
+
+.tooltip{
+    opacity: 1;
+}
+
+/* END tooltip */
+
+
+/* avatar */
+
+.avatar-img{
+    width: 44px;
+    border-radius: 22px;
+}
+
+.avatar-big-img{
+    width: 200px;
+}
+
+/* END avatar */
+
+
+/* forms */
+
+fieldset.form-fields{
+    margin-bottom: 40px;
+}
+
+/* END forms */
+
+
+
+/* Classes */
+
+.voffset8{
+    margin-top: 100px;
+}
+
+/* END Classes */
