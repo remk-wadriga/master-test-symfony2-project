@@ -51,6 +51,39 @@ GeneralBundle\Entity\User:
             type: datetime
             nullable: true
 
+    oneToMany:
+        tests:
+            targetEntity: Test
+            mappedBy: author
+
+    manyToMany:
+        passed_tests:
+            targetEntity: Test
+            inversedBy: passed_users
+            joinTable:
+                name: user_passed_test
+                joinColumns:
+                    joinColumn:
+                        name: user_id
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    joinColumn:
+                        name: test_id
+                        referencedColumnName: id
+        passed_answers:
+            targetEntity: Answer
+            inversedBy: passed_users
+            joinTable:
+                name: user_passed_answer
+                joinColumns:
+                    joinColumn:
+                        name: user_id
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    joinColumn:
+                        name: answer_id
+                        referencedColumnName: id
+
     lifecycleCallbacks:
         prePersist: [ setDateRegistrationValue, setRoleValue, setRateValue, setLoginValue, setPasswordValue ]
         preUpdate: [  ]

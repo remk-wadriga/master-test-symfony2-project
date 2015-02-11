@@ -1,0 +1,44 @@
+GeneralBundle\Entity\Answer:
+    type: entity
+    repositoryClass: GeneralBundle\Repository\AnswerRepository
+    table: answer
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 56
+            nullable: true
+        text:
+            type: text
+            nullable: false
+        rate:
+            type: float
+            nullable: true
+        description:
+            type: text
+            nullable: true
+        is_correct:
+            type: boolean
+            nullable: true
+        num:
+            type: integer
+            nullable: false
+    manyToOne:
+        question:
+            targetEntity: Question
+            inversedBy: anwers
+            joinColumn:
+                name: question_id
+                referencedColumnName: id
+    manyToMany:
+        passed_users:
+            targetEntity: User
+            mappedBy: passed_answers
+
+    lifecycleCallbacks:
+        prePersist: [ setNumValue ]
+        preUpdate: [ setIsCorrectValue ]
