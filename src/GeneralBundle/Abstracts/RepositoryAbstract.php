@@ -10,7 +10,7 @@ namespace GeneralBundle\Abstracts;
 
 use Doctrine\ORM\EntityRepository;
 
-class RepositoryAbstract extends EntityRepository
+abstract class RepositoryAbstract extends EntityRepository
 {
     /**
      * @param string $modelName

@@ -9,7 +9,7 @@ namespace GeneralBundle\Abstracts;
  * Date: 10.09.14
  * Time: 17:23
  */
-class EntityAbstract
+abstract class EntityAbstract
 {
     protected $_error;
 

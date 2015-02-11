@@ -10,7 +10,7 @@ use Symfony\Component\Form\AbstractType;
  * Date: 07.02.2015
  * Time: 20:42
  */
-class Form extends AbstractType
+abstract class Form extends AbstractType
 {
     public function getName()
     {
