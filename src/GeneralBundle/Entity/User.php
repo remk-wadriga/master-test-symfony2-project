@@ -471,4 +471,150 @@ class User extends EntityAbstract implements UserInterface
 
 
     // END Public functions
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $tests;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $passed_tests;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $passed_answers;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->tests = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->passed_tests = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->passed_answers = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set username
+     *
+     * @param string $username
+     * @return User
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+    
+        return $this;
+    }
+
+    /**
+     * Get username
+     *
+     * @return string 
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * Add tests
+     *
+     * @param \GeneralBundle\Entity\Test $tests
+     * @return User
+     */
+    public function addTest(\GeneralBundle\Entity\Test $tests)
+    {
+        $this->tests[] = $tests;
+    
+        return $this;
+    }
+
+    /**
+     * Remove tests
+     *
+     * @param \GeneralBundle\Entity\Test $tests
+     */
+    public function removeTest(\GeneralBundle\Entity\Test $tests)
+    {
+        $this->tests->removeElement($tests);
+    }
+
+    /**
+     * Get tests
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTests()
+    {
+        return $this->tests;
+    }
+
+    /**
+     * Add passed_tests
+     *
+     * @param \GeneralBundle\Entity\Test $passedTests
+     * @return User
+     */
+    public function addPassedTest(\GeneralBundle\Entity\Test $passedTests)
+    {
+        $this->passed_tests[] = $passedTests;
+    
+        return $this;
+    }
+
+    /**
+     * Remove passed_tests
+     *
+     * @param \GeneralBundle\Entity\Test $passedTests
+     */
+    public function removePassedTest(\GeneralBundle\Entity\Test $passedTests)
+    {
+        $this->passed_tests->removeElement($passedTests);
+    }
+
+    /**
+     * Get passed_tests
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPassedTests()
+    {
+        return $this->passed_tests;
+    }
+
+    /**
+     * Add passed_answers
+     *
+     * @param \GeneralBundle\Entity\Answer $passedAnswers
+     * @return User
+     */
+    public function addPassedAnswer(\GeneralBundle\Entity\Answer $passedAnswers)
+    {
+        $this->passed_answers[] = $passedAnswers;
+    
+        return $this;
+    }
+
+    /**
+     * Remove passed_answers
+     *
+     * @param \GeneralBundle\Entity\Answer $passedAnswers
+     */
+    public function removePassedAnswer(\GeneralBundle\Entity\Answer $passedAnswers)
+    {
+        $this->passed_answers->removeElement($passedAnswers);
+    }
+
+    /**
+     * Get passed_answers
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPassedAnswers()
+    {
+        return $this->passed_answers;
+    }
 }

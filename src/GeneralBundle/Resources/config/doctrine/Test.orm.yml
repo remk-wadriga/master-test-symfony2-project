@@ -33,14 +33,14 @@ GeneralBundle\Entity\Test:
             joinColumn:
                 name: user_id
                 referencedColumnName: id
-        oneToMany:
-            questions:
-                targetEntity: Question
-                mappedBy: test
-        manyToMany:
-            passed_users:
-                targetEntity: User
-                mappedBy: passed_tests
+    oneToMany:
+        questions:
+            targetEntity: Question
+            mappedBy: test
+    manyToMany:
+        passed_users:
+            targetEntity: User
+            mappedBy: passed_tests
 
     lifecycleCallbacks:
         prePersist: [ setTypeValue, setDateCreationValue ]
