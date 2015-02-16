@@ -3,6 +3,7 @@
 namespace GeneralBundle\Manager;
 
 use GeneralBundle\Abstracts\ManagerAbstract;
+use GeneralBundle\Entity\Test;
 
 /**
  * Created by PhpStorm.
@@ -15,7 +16,7 @@ class TestManager extends ManagerAbstract
     /**
      * @param integer $testId
      * @param integer $number
-     * @return null|\Test\GeneralBundle\Entity\Question
+     * @return null|\GeneralBundle\Entity\Question
      */
     public function getQuestionByNumber($testId, $number = 1)
     {
