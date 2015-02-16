@@ -3,11 +3,12 @@
 namespace GeneralBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use GeneralBundle\Abstracts\EntityAbstract;
 
 /**
  * Question
  */
-class Question
+class Question extends EntityAbstract
 {
     /**
      * @var integer
@@ -56,6 +57,9 @@ class Question
     {
         $this->answers = new \Doctrine\Common\Collections\ArrayCollection();
     }
+
+
+    // Getters & Setters
 
     /**
      * Get id
@@ -182,6 +186,19 @@ class Question
         return $this->num;
     }
 
+    // END Getters & Setters
+
+
+    // Public functions
+
+
+
+    // END Public functions
+
+
+
+    // Relations
+
     /**
      * Add answers
      *
@@ -237,4 +254,6 @@ class Question
     {
         return $this->test;
     }
+
+    // END Relations
 }

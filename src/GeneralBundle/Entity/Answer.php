@@ -3,11 +3,12 @@
 namespace GeneralBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use GeneralBundle\Abstracts\EntityAbstract;
 
 /**
  * Answer
  */
-class Answer
+class Answer extends EntityAbstract
 {
     /**
      * @var integer
@@ -61,6 +62,9 @@ class Answer
     {
         $this->passed_users = new \Doctrine\Common\Collections\ArrayCollection();
     }
+
+
+    // Getters & Setters
 
     /**
      * Get id
@@ -210,6 +214,41 @@ class Answer
         return $this->num;
     }
 
+    // END Getters & Setters
+
+
+    // Auto event handlers
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setNumValue()
+    {
+        // Add your code here
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function setIsCorrectValue()
+    {
+        // Add your code here
+    }
+
+    // END Auto event handlers
+
+
+
+    // Public functions
+
+
+
+    // END Public functions
+
+
+
+    // Relations
+
     /**
      * Set question
      *
@@ -265,19 +304,6 @@ class Answer
     {
         return $this->passed_users;
     }
-    /**
-     * @ORM\PrePersist
-     */
-    public function setNumValue()
-    {
-        // Add your code here
-    }
 
-    /**
-     * @ORM\PreUpdate
-     */
-    public function setIsCorrectValue()
-    {
-        // Add your code here
-    }
+    // END Relations
 }

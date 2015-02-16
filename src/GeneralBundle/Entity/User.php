@@ -96,9 +96,33 @@ class User extends EntityAbstract implements UserInterface
      */
     private $date_last_login;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $tests;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $passed_tests;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $passed_answers;
 
     public $defaultAvatar = '/bundles/general/img/user/user-default-avatar.jpg';
 
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->tests = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->passed_tests = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->passed_answers = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     // Getters & Setters
 
@@ -405,6 +429,7 @@ class User extends EntityAbstract implements UserInterface
         return $user->getUsername() == $this->getLogin() || $user->getUsername() == $this->getEmail();
     }
 
+
     // Auto event handlers
 
     /**
@@ -471,53 +496,9 @@ class User extends EntityAbstract implements UserInterface
 
 
     // END Public functions
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $tests;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $passed_tests;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $passed_answers;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->tests = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->passed_tests = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->passed_answers = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Set username
-     *
-     * @param string $username
-     * @return User
-     */
-    public function setUsername($username)
-    {
-        $this->username = $username;
-    
-        return $this;
-    }
-
-    /**
-     * Get username
-     *
-     * @return string 
-     */
-    public function getUsername()
-    {
-        return $this->username;
-    }
+   // Relations
 
     /**
      * Add tests
@@ -617,4 +598,6 @@ class User extends EntityAbstract implements UserInterface
     {
         return $this->passed_answers;
     }
+
+    // END Relations
 }

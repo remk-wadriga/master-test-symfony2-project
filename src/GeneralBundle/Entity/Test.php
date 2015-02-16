@@ -3,12 +3,16 @@
 namespace GeneralBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use GeneralBundle\Abstracts\EntityAbstract;
 
 /**
  * Test
  */
-class Test
+class Test extends EntityAbstract
 {
+    const TYPE_SIMPLE = 'simple';
+
+
     /**
      * @var integer
      */
@@ -62,6 +66,9 @@ class Test
         $this->questions = new \Doctrine\Common\Collections\ArrayCollection();
         $this->passed_users = new \Doctrine\Common\Collections\ArrayCollection();
     }
+
+
+    // Getters & Setters
 
     /**
      * Get id
@@ -188,6 +195,44 @@ class Test
         return $this->date_creation;
     }
 
+    // END Getters & Setters
+
+
+    // Auto event handlers
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setTypeValue()
+    {
+        if($this->getType() === null){
+            $this->setType(self::TYPE_SIMPLE);
+        }
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setDateCreationValue()
+    {
+        if($this->getDateCreation() === null){
+            $this->setDateCreation(new \DateTime());
+        }
+    }
+
+    // END Auto event handlers
+
+
+    // Public functions
+
+
+
+    // END Public functions
+
+
+
+    // Relations
+
     /**
      * Add questions
      *
@@ -276,19 +321,6 @@ class Test
     {
         return $this->passed_users;
     }
-    /**
-     * @ORM\PrePersist
-     */
-    public function setTypeValue()
-    {
-        // Add your code here
-    }
 
-    /**
-     * @ORM\PrePersist
-     */
-    public function setDateCreationValue()
-    {
-        // Add your code here
-    }
+    // END Relations
 }
