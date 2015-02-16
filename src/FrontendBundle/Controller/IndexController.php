@@ -37,10 +37,10 @@ class IndexController extends ControllerFrontend
         $user = new User();
         $registrationForm = $this->createForm(new RegistrationForm(), $user);
 
-        if($this->isPostRequest() === true){
+        if($this->isPostRequest()){
             $registrationForm->submit($this->getRequest());
 
-            if($registrationForm->isValid() === true){
+            if($registrationForm->isValid()){
                 $em = $this->getDoctrine()->getManager();
 
                 $em->persist($user);

@@ -10,8 +10,13 @@ use GeneralBundle\Abstracts\EntityAbstract;
  */
 class Test extends EntityAbstract
 {
-    const TYPE_SIMPLE = 'simple';
+    const TYPE_SIMPLE = 'SIMPLE_TEST';
+    const TYPE_STANDARD = 'STANDARD_TEST';
 
+    private static $_types = [
+        self::TYPE_SIMPLE => 'Простой тест',
+        self::TYPE_STANDARD => 'Сложный тест',
+    ];
 
     /**
      * @var integer
@@ -225,7 +230,13 @@ class Test extends EntityAbstract
 
     // Public functions
 
-
+    /**
+     * @return array
+     */
+    public function getTypesItems()
+    {
+        return self::$_types;
+    }
 
     // END Public functions
 
