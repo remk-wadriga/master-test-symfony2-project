@@ -33,6 +33,7 @@ class TestController extends ControllerFrontend
     public function newTestTypeAction()
     {
         $test = new Test();
+        $test->setAuthor($this->getUser());
         $testTypeForm = $this->createForm(new TestTypeForm(), $test);
 
         if($this->isPostRequest()){

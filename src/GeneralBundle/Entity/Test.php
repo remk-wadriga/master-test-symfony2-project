@@ -225,6 +225,16 @@ class Test extends EntityAbstract
         }
     }
 
+    /**
+     * @ORM\PrePersist
+     */
+    public function setAuthorValue()
+    {
+        if($this->getAuthor() === null){
+            $this->setAuthor();
+        }
+    }
+
     // END Auto event handlers
 
 

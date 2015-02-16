@@ -16,12 +16,18 @@ class TestTypeForm extends Form
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('username', 'text', [
+        /**
+         * @var \GeneralBundle\Entity\Test
+         */
+        $test = isset($options['data']) ? $options['data'] : null;
+
+        $builder->add('type', 'choice', [
             'label' => 'Логин',
             'required' => true,
             'attr' => [
                 'placeholder' => 'Логин',
-            ]
+            ],
+            'choices' => $test !== null ? $test->getTypesItems() : [],
         ]);
         /*$builder->add('password', 'repeated', [
             'type' => 'password',

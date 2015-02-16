@@ -43,7 +43,7 @@ GeneralBundle\Entity\Test:
             mappedBy: passed_tests
 
     lifecycleCallbacks:
-        prePersist: [ setTypeValue, setDateCreationValue ]
+        prePersist: [ setTypeValue, setDateCreationValue, setAuthorValue ]
         preUpdate: [  ]
         postPersist: [  ]
         postUpdate: [  ]
