@@ -82,6 +82,16 @@ abstract class ManagerAbstract
         $this->errors[] = $text;
     }
 
+    public function persist(\GeneralBundle\Abstracts\EntityAbstract $entity)
+    {
+        $this->em->persist($entity);
+    }
+
+    public function flush()
+    {
+       $this->em->flush();
+    }
+
     /**
      * @return array
      */
@@ -101,5 +111,14 @@ abstract class ManagerAbstract
     public function hasErrors()
     {
         return count($this->errors) === 0;
+    }
+
+    private function getRepositoryName($repositoryName = null)
+    {
+        if($repositoryName === null){
+            $name = explode('\\', get_class($this));
+
+        }
+
     }
 }

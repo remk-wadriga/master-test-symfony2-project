@@ -32,11 +32,13 @@ class TestController extends ControllerFrontend
 
     public function editTestTypeAction($id = null)
     {
+        $model = $this->model('Test');
+
         if($id === null){
             $test = new Test();
             $test->setAuthor($this->getUser());
         }else{
-            $test = $this->model('Test')->findById($id);
+            $test = $model->find($id);
             if(!$test)
                 throw $this->createNotFoundException();
         }
@@ -46,14 +48,10 @@ class TestController extends ControllerFrontend
         if($this->isPostRequest()){
             $testTypeForm->submit($this->getRequest());
             if($testTypeForm->isValid()){
-                $em = $this->getDoctrine()->getManager();
+                if($id === null)
+                    $model->persist($test);
 
-                if($id === null){
-                    $em->persist($test);
-                    $em->flush();
-                }else{
-                    $em->refresh($test);
-                }
+                $model->flush();
 
                 return $this->redirect($this->generateUrl('test_add_question', ['id' => $test->getId(), 'questionId' => 1]));
             }else{

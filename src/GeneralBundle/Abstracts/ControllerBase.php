@@ -43,7 +43,7 @@ abstract class ControllerBase extends Controller
 
     /**
      * @param string $modelName
-     * @return null|object
+     * @return null|\GeneralBundle\Abstracts\ManagerAbstract
      */
     protected function model($modelName)
     {
