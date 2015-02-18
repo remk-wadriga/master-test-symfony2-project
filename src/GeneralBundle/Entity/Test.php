@@ -248,6 +248,11 @@ class Test extends EntityAbstract
         return self::$_types;
     }
 
+    public function getOwnerName()
+    {
+        return $this->author->getUserName();
+    }
+
     // END Public functions
 
 

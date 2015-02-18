@@ -17,7 +17,7 @@ services:
         arguments: [@doctrine, @translator]
     test_manager:
         class: GeneralBundle\Manager\TestManager
-        arguments: [@doctrine, @translator]
+        arguments: [@doctrine, @translator, @service_container]
     user_test_result_manager:
         class: GeneralBundle\Manager\UserTestResultManager
         arguments: [@doctrine, @translator]

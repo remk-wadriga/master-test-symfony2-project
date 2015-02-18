@@ -16,24 +16,29 @@ class TestController extends ControllerFrontend
 {
     public function indexAction($id)
     {
-        return $this->render();
+        return $this->render([
+            'test' => $this->model('Test')->findById($id)
+        ]);
     }
 
     public function listAction()
     {
-        $tests = [];
-
         return $this->render([
-            'tests' => $tests,
+            'tests' => $this->model('Test')->getUserTests($this->getUser()->getId()),
             'pageName' => $this->t('Мои тесты'),
             'pageSubHead' => $this->renderPartial('_addTest'),
         ]);
     }
 
-    public function newTestTypeAction()
+    public function editTestTypeAction($id = null)
     {
-        $test = new Test();
-        $test->setAuthor($this->getUser());
+        if($id === null){
+            $test = new Test();
+            $test->setAuthor($this->getUser());
+        }else{
+            $test = $this->model('Test')->findById($id);
+        }
+
         $testTypeForm = $this->createForm(new TestTypeForm(), $test);
 
         if($this->isPostRequest()){

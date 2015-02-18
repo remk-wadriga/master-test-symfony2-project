@@ -10,6 +10,8 @@ use GeneralBundle\Entity\Test;
  * User: rem
  * Date: 14.10.14
  * Time: 14:42
+ *
+ * @property \GeneralBundle\Repository\TestRepository $repository
  */
 class TestManager extends ManagerAbstract
 {
@@ -21,5 +23,15 @@ class TestManager extends ManagerAbstract
     public function getQuestionByNumber($testId, $number = 1)
     {
         return $this->model('Question')->findOneBy(['test' => $testId, 'num' => $number]);
+    }
+
+    public function getUserTests($userId)
+    {
+        return $this->repository->getUserTests($userId);
+    }
+
+    public function findById($id)
+    {
+        return $this->repository->find($id);
     }
 }

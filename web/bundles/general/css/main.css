@@ -74,6 +74,9 @@
 .auto-url{
     cursor: pointer;
 }
+.auto-url:hover{
+    color: #6c6eff;
+}
 
 /* END auto-url */
 

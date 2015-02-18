@@ -7,3 +7,4 @@ twig:
         modal_window_params: { title: 'Модальное окно', sub_title: '', content: '', button_ok: 'Сохранить', button_cancel: 'Отмена', ok_link: 'test_homepage', cancel_link: 'test_homepage' }
         showSubmitButton: true
         date_format: %date_format%
+        date_time_format: %date_time_format%

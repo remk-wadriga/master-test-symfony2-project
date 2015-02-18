@@ -8,6 +8,10 @@
 
 namespace GeneralBundle\Abstracts;
 
+use Symfony\Component\DependencyInjection\ContainerInterface as Container;
+use Symfony\Component\Translation\IdentityTranslator as Translator;
+use Doctrine\Bundle\DoctrineBundle\Registry;
+
 abstract class ManagerAbstract
 {
     /**
@@ -21,21 +25,28 @@ abstract class ManagerAbstract
     protected $repository;
 
     /**
-     * @var \Symfony\Component\Translation\Translator
+     * @var \Symfony\Component\Translation\IdentityTranslator
      */
     protected $translator;
 
+    /**
+     * @var \Symfony\Component\DependencyInjection\ContainerInterface
+     */
+    protected $container;
+
     protected $errors = [];
 
-    public function __construct(\Doctrine\Bundle\DoctrineBundle\Registry $doctrine, \Symfony\Component\Translation\Translator $translator)
+    public function __construct(Registry $doctrine, Translator $translator, Container $container)
     {
         $this->em = $doctrine->getManager();
         $this->translator = $translator;
+        $this->container = $container;
     }
 
     public function init(\GeneralBundle\Abstracts\RepositoryAbstract $repository)
     {
         $this->repository = $repository;
+        $this->repository->setContainer($this->container);
     }
 
     /**
