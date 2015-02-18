@@ -3,6 +3,7 @@
 namespace GeneralBundle\Forms;
 
 use GeneralBundle\Abstracts\Form;
+use GeneralBundle\Entity\Test;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
@@ -16,10 +17,7 @@ class TestTypeForm extends Form
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        /**
-         * @var \GeneralBundle\Entity\Test
-         */
-        $test = isset($options['data']) ? $options['data'] : null;
+        $test = isset($options['data']) && $options['data'] instanceof Test ? $options['data'] : null;
 
         $builder->add('type', 'choice', [
             'label' => 'Логин',
@@ -29,27 +27,26 @@ class TestTypeForm extends Form
             ],
             'choices' => $test !== null ? $test->getTypesItems() : [],
         ]);
-        /*$builder->add('password', 'repeated', [
-            'type' => 'password',
-            'invalid_message' => 'Введённые пароли не совпадают',
+        $builder->add('name', 'text', [
+            'label' => 'Название',
             'required' => true,
-            'first_options'  => [
-                'attr' => [
-                    'placeholder' => 'Пароль'
-                ]
-            ],
-            'second_options' => [
-                'attr' => [
-                    'placeholder' => 'Повторите Пароль'
-                ]
-            ],
-        ]);*/
+            'attr' => [
+                'placeholder' => 'Название',
+            ]
+        ]);
+        $builder->add('description', 'textarea', [
+            'label' => 'Описание',
+            'required' => true,
+            'attr' => [
+                'placeholder' => 'Описание',
+            ]
+        ]);
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'GeneralBundle\Entity\User'
+            'data_class' => 'GeneralBundle\Entity\Test'
         ]);
     }
 }

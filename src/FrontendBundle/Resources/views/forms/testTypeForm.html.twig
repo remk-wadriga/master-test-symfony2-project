@@ -1,0 +1,16 @@
+<form action="{{ path('new_test_type') }}" method="post" {{ form_enctype(testTypeForm) }}>
+    {{ form_errors(testTypeForm) }}
+
+    <fieldset>
+
+        <div class="form-group">
+            {{ form_widget(testTypeForm.type, { attr: { 'class': 'form-control' } }) }}
+        </div>
+
+        {{ form_rest(testTypeForm) }}
+
+    </fieldset>
+
+    <input type="submit" value="{% trans %}Принять{% endtrans %}" class="btn btn-lg btn-success btn-block" />
+
+</form>

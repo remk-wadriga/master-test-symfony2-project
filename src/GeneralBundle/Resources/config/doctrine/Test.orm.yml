@@ -31,7 +31,7 @@ GeneralBundle\Entity\Test:
             targetEntity: User
             inversedBy: tests
             joinColumn:
-                name: user_id
+                name: owner_id
                 referencedColumnName: id
     oneToMany:
         questions:
