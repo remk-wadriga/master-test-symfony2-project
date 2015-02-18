@@ -37,6 +37,8 @@ class TestController extends ControllerFrontend
             $test->setAuthor($this->getUser());
         }else{
             $test = $this->model('Test')->findById($id);
+            if(!$test)
+                throw $this->createNotFoundException();
         }
 
         $testTypeForm = $this->createForm(new TestTypeForm(), $test);
@@ -46,8 +48,12 @@ class TestController extends ControllerFrontend
             if($testTypeForm->isValid()){
                 $em = $this->getDoctrine()->getManager();
 
-                $em->persist($test);
-                $em->flush();
+                if($id === null){
+                    $em->persist($test);
+                    $em->flush();
+                }else{
+                    $em->refresh($test);
+                }
 
                 return $this->redirect($this->generateUrl('test_add_question', ['id' => $test->getId(), 'questionId' => 1]));
             }else{

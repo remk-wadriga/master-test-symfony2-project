@@ -122,7 +122,7 @@ abstract class ControllerBase extends Controller
             $json['html'] = $this->renderView($this->parseViewString($view), $params);
         }
 
-        return new Response(json_encode($json) , 200 , ['Content-Type' => 'application/json']);
+        return new Response(json_encode($json), 200, ['Content-Type' => 'application/json']);
     }
 
     /**
