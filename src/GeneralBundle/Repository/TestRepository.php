@@ -12,9 +12,15 @@ use GeneralBundle\Abstracts\RepositoryAbstract;
  */
 class TestRepository extends RepositoryAbstract
 {
+    /**
+     * @param int $userId
+     * @return \GeneralBundle\Entity\Test[]
+     */
     public function getUserTests($userId, $offset = 0)
     {
         return $this->getQB()
+                    ->where('t.owner_id = :user_id')
+                    ->setParameter('user_id', $userId)
                     ->setFirstResult($offset)
                     ->setMaxResults($this->container->getParameter('test_list_limit'))
                     ->getQuery()

@@ -3,7 +3,6 @@
 namespace GeneralBundle\Manager;
 
 use GeneralBundle\Abstracts\ManagerAbstract;
-use GeneralBundle\Entity\Test;
 
 /**
  * Created by PhpStorm.
@@ -25,11 +24,19 @@ class TestManager extends ManagerAbstract
         return $this->model('Question')->findOneBy(['test' => $testId, 'num' => $number]);
     }
 
+    /**
+     * @param int $userId
+     * @return \GeneralBundle\Entity\Test[]
+     */
     public function getUserTests($userId)
     {
         return $this->repository->getUserTests($userId);
     }
 
+    /**
+     * @param int $id
+     * @return null|\GeneralBundle\Entity\Test
+     */
     public function findById($id)
     {
         return $this->repository->find($id);
