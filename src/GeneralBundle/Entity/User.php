@@ -402,7 +402,7 @@ class User extends EntityAbstract implements UserInterface
      */
     public function equals(UserInterface $user)
     {
-        return $user->getUsername() == $this->getLogin() || $user->getUsername() == $this->getEmail();
+        return $user->getUsername() == $this->getUsername();
     }
 
     // Auto event handlers

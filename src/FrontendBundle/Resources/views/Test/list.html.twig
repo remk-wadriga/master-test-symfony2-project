@@ -13,5 +13,7 @@
 
 {% block scripts %}
     {{ parent() }}
-    TestList.init();
+    TestList.init({
+        testTypeGetFormUrl: "{{ path('get_test_type_form') }}"
+    });
 {% endblock %}
