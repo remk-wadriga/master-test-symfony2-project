@@ -1,0 +1,17 @@
+{% extends 'FrontendBundle::main.html.twig' %}
+
+{% block scriptFiles %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/frontend/js/pages/add-question.js') }}" type="text/javascript"></script>
+{% endblock %}
+
+{% block content %}
+
+    <h1>NEW QUESTION</h1>
+
+{% endblock %}
+
+{% block scripts %}
+    {{ parent() }}
+    AddQuestion.init();
+{% endblock %}

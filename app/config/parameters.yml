@@ -13,6 +13,9 @@ parameters:
     locale: en
     secret: UISDF876DKMFSF544DFSFD
     date_format: Y-m-d
+    date_time_format: Y-m-d H:i:s
     use_assetic_controller: true
     debug_toolbar: true
     debug_redirects: false
+
+    test_list_limit: 10

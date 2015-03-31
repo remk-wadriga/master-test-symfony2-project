@@ -2,16 +2,16 @@
 
 {% block scriptFiles %}
     {{ parent() }}
-    <script src="{{ asset('bundles/frontend/js/pages/test-list.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/frontend/js/pages/new-test-type.js') }}" type="text/javascript"></script>
 {% endblock %}
 
 {% block content %}
 
-    <h1>{{ step }}</h1>
+    {% include 'FrontendBundle:forms:testTypeForm.html.twig' %}
 
 {% endblock %}
 
 {% block scripts %}
     {{ parent() }}
-    TestList.init();
+    NewTestType.init();
 {% endblock %}

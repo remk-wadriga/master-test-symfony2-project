@@ -30,6 +30,25 @@ create_test:
     requirements:
         step:  \d+
 
-get_test_type_form:
-    path:     get-test-type-form
-    defaults: { _controller: FrontendBundle:Test:typeForm }
+new_test_type:
+    path:     new-test-type
+    defaults: { _controller: FrontendBundle:Test:editTestType }
+
+edit_test_type:
+    path:     test-{id}-type
+    defaults: { _controller: FrontendBundle:Test:editTestType }
+    requirements:
+        id:  \d+
+
+test_add_question:
+    path:     test-{id}-question-{questionId}
+    defaults: { _controller: FrontendBundle:Test:addQuestion }
+    requirements:
+        id:  \d+
+        questionId: \d+
+
+test:
+    path: test-{id}
+    defaults: { _controller: FrontendBundle:Test:index }
+    requirements:
+        id:  \d+

@@ -29,6 +29,11 @@ class Test
         echo '</pre>';
         die;
     }
+
+    public static function className($object)
+    {
+        self::show(get_class($object));
+    }
 }
 
 $loader = require_once __DIR__.'/../app/bootstrap.php.cache';

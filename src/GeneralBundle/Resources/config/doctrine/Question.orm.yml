@@ -1,0 +1,39 @@
+GeneralBundle\Entity\Question:
+    type: entity
+    repositoryClass: GeneralBundle\Repository\QuestionRepository
+    table: question
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 56
+            nullable: true
+        text:
+            type: text
+            nullable: false
+        rate:
+            type: float
+            nullable: true
+        description:
+            type: text
+            nullable: true
+        num:
+            type: integer
+            nullable: false
+
+    manyToOne:
+        test:
+            targetEntity: Test
+            inversedBy: questions
+            joinColumn:
+                name: test_id
+                referencedColumnName: id
+    oneToMany:
+        answers:
+            targetEntity: Answer
+            mappedBy: question
+            cascade: [ persist, remove ]

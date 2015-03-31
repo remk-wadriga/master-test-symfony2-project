@@ -20,7 +20,7 @@ TestList = {
     },
 
     setHandlers: function(){
-        TestList.selectTextType();
+        //TestList.selectTextType();
     },
 
     // Handlers

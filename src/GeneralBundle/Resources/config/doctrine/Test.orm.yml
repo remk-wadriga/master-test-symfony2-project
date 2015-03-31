@@ -1,0 +1,49 @@
+GeneralBundle\Entity\Test:
+    type: entity
+    repositoryClass: GeneralBundle\Repository\TestRepository
+    table: test
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        type:
+            type: string
+            length: 24
+            nullable: false
+        owner_id:
+            type: integer
+            nullable: false
+        name:
+            type: string
+            length: 56
+            nullable: true
+        description:
+            type: text
+            nullable: true
+        date_creation:
+            type: datetime
+            nullable: false
+
+    manyToOne:
+        author:
+            targetEntity: User
+            inversedBy: tests
+            joinColumn:
+                name: owner_id
+                referencedColumnName: id
+    oneToMany:
+        questions:
+            targetEntity: Question
+            mappedBy: test
+    manyToMany:
+        passed_users:
+            targetEntity: User
+            mappedBy: passed_tests
+
+    lifecycleCallbacks:
+        prePersist: [ setTypeValue, setDateCreationValue, setAuthorValue ]
+        preUpdate: [  ]
+        postPersist: [  ]
+        postUpdate: [  ]

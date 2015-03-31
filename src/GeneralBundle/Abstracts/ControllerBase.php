@@ -43,7 +43,7 @@ abstract class ControllerBase extends Controller
 
     /**
      * @param string $modelName
-     * @return null|object
+     * @return null|\GeneralBundle\Abstracts\ManagerAbstract
      */
     protected function model($modelName)
     {
@@ -71,7 +71,8 @@ abstract class ControllerBase extends Controller
         }
 
         if($manager){
-            $manager->init($this->getDoctrine()->getManager()->getRepository('GeneralBundle:'.$modelName));
+            $repository = $this->getDoctrine()->getManager()->getRepository('GeneralBundle:'.$modelName);
+            $manager->init($repository);
         }
 
         return $manager;

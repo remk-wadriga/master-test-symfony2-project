@@ -7,7 +7,29 @@
 
 {% block content %}
 
-    <h1>TEST-LIST</h1>
+    <table>
+
+        <thead>
+            <tr>
+                <th>{{ 'ID' | trans }}</th>
+                <th>{{ 'Название' | trans }}</th>
+                <th>{{ 'Тип' | trans }}</th>
+                <th>{{ 'Дата создания' | trans }}</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for test in tests %}
+                <tr class="auto-url" data-url="{{ path('test', {'id': test.id} ) }}">
+                    <td>{{ test.id }}</td>
+                    <td>{{ test.name }}</td>
+                    <td>{{ test.type }}</td>
+                    <td>{{ test.dateCreation | date(date_format) }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
 
 {% endblock %}
 

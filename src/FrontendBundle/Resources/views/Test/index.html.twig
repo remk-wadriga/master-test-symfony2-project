@@ -7,7 +7,9 @@
 
 {% block content %}
 
-    <h1>TEST</h1>
+    <h1>{{ test.name }}</h1>
+    <br />
+    <h3><a href="{{ path('edit_test_type', {'id': test.id} ) }}">{{ 'Редактировать' | trans }}</a></h3>
 
 {% endblock %}
 
